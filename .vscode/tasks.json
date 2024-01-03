@@ -1,0 +1,62 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C++: cl.exe build dll",
+			"command": "cl.exe",
+			"args": [
+				"/EHsc",
+				"/W0",
+				"/nologo",
+				"/LD",
+				//"/Gz",
+				"/Fe${workspaceFolder}\\bin\\Gothic3Online.dll",
+				"/I${workspaceFolder}\\include",
+				"/I${workspaceFolder}\\include\\Shared",
+				"/I${workspaceFolder}\\include\\Shared\\Asmjit",	
+				//"/I${workspaceFolder}\\include\\Shared\\distorm",
+				//"/I${workspaceFolder}\\include\\Shared\\LibCyaml\\include",
+				"${workspaceFolder}\\src\\*.cpp",
+				"${workspaceFolder}\\include\\Shared\\util\\*.cpp",
+				"${workspaceFolder}\\include\\Shared\\Asmjit\\asmjit\\base\\*.cpp",
+				"${workspaceFolder}\\include\\Shared\\Asmjit\\asmjit\\x86\\*.cpp",
+				"${workspaceFolder}\\include\\Shared\\Asmjit\\asmtk\\*.cpp",
+				"${workspaceFolder}\\include\\Game\\*.cpp",
+				"${workspaceFolder}\\lib\\*.lib",
+				//"${workspaceFolder}\\*.obj",
+				"User32.lib",
+				"Ws2_32.lib"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": "build",
+			"detail": "compiler: cl.exe"
+		},
+		{
+			"type": "shell",
+			"label": "Copy output",
+			"command": "xcopy",
+			"args": [
+				"${workspaceFolder}\\bin\\Gothic3Online.dll",
+				"D:\\steam\\steamapps\\common\\Gothic 3\\scripts\\Script_Online.dll*",
+				"/y"
+			],
+		},
+		{
+			"type": "shell",
+			"label": "Run",
+			"command": "start",
+			"args": [
+				"D:\\steam\\steamapps\\common\\Gothic 3\\Gothic3.exe",
+			],
+			"options": {
+				"cwd": "D:\\steam\\steamapps\\common\\Gothic 3"
+			},
+		}
+	]
+}
